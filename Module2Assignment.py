@@ -3,7 +3,6 @@
 #This code's goal is to make setting up an introductory budget simple and straightforward: taking input about the person and their income and stacking it up against their expenses while giving them insight into what percent of their spending falls in each category --- and finally showing plainly a summary of money in, money out.
 
 
-
 name = input("What is your name?: ")
 hourly_rate = float(input("What is your hourly pay rate?: "))
 # the budgeter-to-be enters their total hours per each of four work weeks
