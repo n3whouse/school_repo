@@ -9,7 +9,7 @@ import sys
 
 ### First, initialize variables:
 #    counts for egg weights - jumbo, extra_large, large, medium, and small - initialized to 0
-#     full egg (count) initialized as 0
+#     full egg (count) and total_weight initialized as 0
 #     (max_weight) and (min_weight) set to -sys.maxsize - 1 and sys.maxsize, respectively
 
 total_weight = 0 #for computing average
