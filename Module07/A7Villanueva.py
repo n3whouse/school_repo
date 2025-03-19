@@ -13,7 +13,7 @@ def main():
     # Next, we print the ascending stars and follow it with the header.
     printup()
     print(f"{'Year':<10}{'SLN Depreciation':<20}{'SLN Worth':<20}{'SYR Depreciation':<20}{'SYR Worth':<20}")
-    print("-" * 50) #lil divider to make it look nice
+    print("-" * 80) #lil divider to make it look nice
 
     # Here we loop through every year in the range of year 1 to the 'life_years' input (+ 1 so it is inclusive of entered year) and calculates the SLN, SYR, and their respective worths.
     for year in range(1, life_years + 1):
@@ -23,7 +23,7 @@ def main():
         current_worth_sum_years = initial_worth - sum_years_depreciation
 
         ## it then prints them in the same format as the header so everything is aligned
-        print(f"{year:<10}{straight_line_depreciation:<20.2f}{current_worth_straight_line:<20.2f}{sum_years_depreciation:<20.2f}{current_worth_sum_years:<20.2f}")
+        print(f"{year:<10}${straight_line_depreciation:<20,.2f}${current_worth_straight_line:<20,.2f}${sum_years_depreciation:<20,.2f}${current_worth_sum_years:<20,.2f}")
     ## and then it prints the trailing stars to finish off the program printing.
     printdown()
 
@@ -43,7 +43,7 @@ def get_initial_worth():
     return worth
 
 def get_salvage_value(worth):
-    # Prompts the user for the salvage value and validates the input.
+    # Works the same as the above fx
     valid_input = False
     salvage = 0.0
     while not valid_input:
@@ -60,7 +60,7 @@ def get_salvage_value(worth):
     return salvage
 
 def get_years():
-    # Prompts the user for the number of years of life for the vehicle and validates the input.
+    # Works the same way as the two fx's above
     valid_input = False
     years = 0
     while not valid_input:
@@ -75,24 +75,21 @@ def get_years():
     return years
 
 def printup():
-    # This function prints an ascending star pattern.
+    # This function prints an ascending star pattern and says, whichever this iteration is between the args, print that many stars. The range is 1-9 to include 8.
     for i in range(1, 9):
-        print('*' * i)  # Print i stars
+        print('*' * i)
 
 def printdown(n=8):
-    # This function prints a descending star pattern using recursion.
+    # This fx sets n as 8 and has a recursive case below that says "as long as n is greater than zero, print n amount of stars, then decrement n by 1."
     if n > 0:
         print('*' * n)
         printdown(n - 1)
 
+# These two fx's are how the SLN and SYR depreciation for a given year is calculated. sln is passed the inputs and subtract initial from salvage and divides by life. SYR takes in all inputs including the year variable from the for loop that executes the calculations, so that the year can be accounted for in the more complex sum of years deprecation calculation.
 def sln(initial, salvage, life):
     return (initial - salvage) / life
 
 def syr(initial, salvage, life, year):
-    """
-    Calculates and returns the sum-of-years depreciation for a given year.
-    Formula for year y: ((initial worth - salvage) * (life - year + 1) * 2) / (life * (life + 1))
-    """
     return ((initial - salvage) * (life - year + 1) * 2) / (life * (life + 1))
 
 main()
